@@ -1,0 +1,13 @@
+{
+    "repositories": [
+    {
+      "id": "central",
+      "layout": "default",
+      "url": "https://repo.maven.apache.org/maven2/"
+    },
+    {
+        "id": "local",
+        "url": "file:///home/concord/.m2/repository"
+    }
+    ]
+}

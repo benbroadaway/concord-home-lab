@@ -1,0 +1,5 @@
+configuration:
+  arguments:
+    uiLinks:
+      form: "{{ serverApiBaseUrl }}/#/process/%s/form/%s/step"
+      wizard: "{{ serverApiBaseUrl }}/#/process/%s/wizard"
