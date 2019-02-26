@@ -91,6 +91,7 @@ docker run -d \
     -v "${BASE_DIR}/maven.json:/opt/concord/conf/maven.json:ro" \
     -e 'CONCORD_MAVEN_CFG=/opt/concord/conf/maven.json' \
     -e 'CONCORD_CFG_FILE=/opt/concord/conf/server.conf' \
+    -e 'CONCORD_ENV=home-lab' \
     -e "DB_URL=jdbc:postgresql://${dbName}:5432/postgres" \
     walmartlabs/concord-server:${concordVersion}
 
