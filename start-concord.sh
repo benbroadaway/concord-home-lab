@@ -44,7 +44,7 @@ mv ${CONCORD_CFG_FILE}.tmp ${CONCORD_CFG_FILE}
 echo "CONCORD_CFG_FILE: ${CONCORD_CFG_FILE}"
 
 echo "Deleting any existing containers..."
-docker rm -f ${consoleName} ${agentName} ${serverName} ${dbName} ${oldapName} 2>/dev/null
+docker rm -f ${consoleName} ${agentName} dind ${serverName} ${dbName} ${oldapName} 2>/dev/null
 
 # Start Postgres DB
 docker run -d \
@@ -103,17 +103,26 @@ until $(curl --output /dev/null --silent --head --fail "http://localhost:8001/ap
 done
 printf ".\n"
 
+
+# Start Docker-in-Docker (DIND)
+docker run -d \
+    --privileged \
+    --name dind \
+    --volume ${DEV_DIR}/tmp:/tmp \
+    'docker:18.09-dind'
+
 # Start Concord Agent
 docker run -d \
     --name ${agentName} \
     --link ${serverName} \
+    --link dind \
     -v ${DEV_DIR}/tmp:/tmp \
     -v "${HOME}/.m2/repository:/home/concord/.m2/repository" \
     -v "${BASE_DIR}/maven.json:/opt/concord/conf/maven.json:ro" \
     -e 'CONCORD_MAVEN_CFG=/opt/concord/conf/maven.json' \
     -e 'CONCORD_DOCKER_LOCAL_MODE=false' \
-    -e 'SERVER_API_BASE_URL=http://server:8001' \
-    -e 'SERVER_WEBSOCKET_URL=ws://server:8001/websocket' \
+    -e "SERVER_API_BASE_URL=http://${serverName}:8001" \
+    -e "SERVER_WEBSOCKET_URL=ws://${serverName}:8001/websocket" \
     walmartlabs/concord-agent:${concordVersion}
 
 
