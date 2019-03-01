@@ -6,7 +6,7 @@ Quick and dirty and not-super secure script to whip up a [Concord](https://conco
 * Linux or Mac OS
 * 4GB memory
 * Docker Hub access (or somehow get OpenLDAP and Postgres)
-* Concord Images (see [Where to get Concord Images](#where-to-get-concord-images))
+* Concord Docker Images (see [Where to get Concord Images](#where-to-get-concord-images))
 
 ## Set up config
 Create a file called `.dev_config.props` in the root folder. Customize the variables with values you want. 
