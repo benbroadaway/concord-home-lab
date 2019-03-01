@@ -13,4 +13,3 @@ json=$(
 key=$(echo ${json} | sed -e 's/.*key" * : *"\(.[^"]*\)".*/\1/')
 echo "Keep your API key secret for future use!"
 echo "Here's your API key: ${key}"
-
