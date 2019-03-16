@@ -96,7 +96,7 @@ docker run -d \
     -e 'CONCORD_CFG_FILE=/opt/concord/conf/server.conf' \
     -e 'CONCORD_ENV=home-lab' \
     -e "DB_URL=jdbc:postgresql://${dbName}:5432/postgres" \
-    ${consoleName}/concord-server:${concordVersion}
+    ${dockerLibrary}/concord-server:${concordVersion}
 
 # wait for server to start
 echo -n "Waiting for server to start"
@@ -126,7 +126,7 @@ docker run -d \
     -e 'CONCORD_DOCKER_LOCAL_MODE=false' \
     -e "SERVER_API_BASE_URL=http://${serverName}:8001" \
     -e "SERVER_WEBSOCKET_URL=ws://${serverName}:8001/websocket" \
-    ${consoleName}/concord-agent:${concordVersion}
+    ${dockerLibrary}/concord-agent:${concordVersion}
 
 
 # Start Concord Console
@@ -136,7 +136,7 @@ docker run -d \
     --publish "${consolePort}:8080" \
     --volume "${BASE_DIR}/dev/console/logs:/opt/concord/logs" \
     --volume "${BASE_DIR}/app.conf:/opt/concord/console/nginx/app.conf" \
-    ${consoleName}/concord-console:${concordVersion}
+    ${dockerLibrary}/concord-console:${concordVersion}
 
 
 sleep 5;
