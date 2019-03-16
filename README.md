@@ -16,7 +16,7 @@ ldapUser=my-ldap-username
 ldapPass=my-ldap-password
 oldapAdminPass=admin-password
 dbPass=database-password
-concordVersion=1.9.0
+concordVersion=1.12.0
 consolePort=8080   # docker-published port
 ```
 
@@ -25,7 +25,7 @@ consolePort=8080   # docker-published port
 $ ./start-concord.sh
 ```
 ```
-concordVersion: 1.9.0
+concordVersion: 1.12.0
 CONCORD_CFG_FILE: /home/ubuntu/Projects/concord-dev/dev/server.conf
 Deleting any existing containers...
 concord-console
@@ -56,10 +56,10 @@ They're not on Docker Hub yet, but you can [build them from source](https://gith
 Check out a release tag.
 ```
 $ git fetch --all --tags --prune
-$ git checkout tags/1.9.0 -b concord-1.9.0
+$ git checkout tags/1.12.0 -b concord-1.12.0
 ```
 ```
-Switched to a new branch 'concord-1.9.0'
+Switched to a new branch 'concord-1.12.0'
 ```
 Build and pray
 ```
@@ -74,16 +74,16 @@ See what you have now
 $ docker images ls | grep concord
 ```
 ```
-walmartlabs/concord-console   1.9.0                   fe02c9e4f441        About a minute ago   584MB
-walmartlabs/concord-console   latest                  fe02c9e4f441        About a minute ago   584MB
-walmartlabs/concord-server    1.9.0                   6d4cd38ea6cc        2 minutes ago        663MB
-walmartlabs/concord-server    latest                  6d4cd38ea6cc        2 minutes ago        663MB
-walmartlabs/concord-agent     1.9.0                   a7561537f076        3 minutes ago        1.07GB
-walmartlabs/concord-agent     latest                  a7561537f076        3 minutes ago        1.07GB
-walmartlabs/concord-ansible   1.9.0                   4a1ffde29fb8        4 minutes ago        729MB
-walmartlabs/concord-ansible   latest                  4a1ffde29fb8        4 minutes ago        729MB
-walmartlabs/concord-base      1.9.0                   4dae76681b32        5 minutes ago        504MB
-walmartlabs/concord-base      latest                  4dae76681b32        5 minutes ago        504MB
+walmartlabs/concord-console   1.12.0              b9469d23fbd9        2 minutes ago       572MB
+walmartlabs/concord-console   latest              b9469d23fbd9        2 minutes ago       572MB
+walmartlabs/concord-server    1.12.0              02b402aa5fe2        3 minutes ago       569MB
+walmartlabs/concord-server    latest              02b402aa5fe2        3 minutes ago       569MB
+walmartlabs/concord-agent     1.12.0              aae56d25c75e        3 minutes ago       895MB
+walmartlabs/concord-agent     latest              aae56d25c75e        3 minutes ago       895MB
+walmartlabs/concord-ansible   1.12.0              205f05035f3c        3 minutes ago       750MB
+walmartlabs/concord-ansible   latest              205f05035f3c        3 minutes ago       750MB
+walmartlabs/concord-base      1.12.0              ca619feebee1        4 minutes ago       528MB
+walmartlabs/concord-base      latest              ca619feebee1        4 minutes ago       528MB
 ```
 
 ## Kind of common build problems

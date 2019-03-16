@@ -4,6 +4,7 @@ BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 DEV_DIR=${BASE_DIR}/dev
 defaultVars=${BASE_DIR}/default_vars.yml
 mkdir -p ${DEV_DIR}/tmp
+chmod 0777 ${DEV_DIR}/tmp
 
 ldapUser=
 ldapPass=
