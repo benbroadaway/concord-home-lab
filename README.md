@@ -86,6 +86,23 @@ walmartlabs/concord-base      1.12.0              ca619feebee1        4 minutes 
 walmartlabs/concord-base      latest              ca619feebee1        4 minutes ago       528MB
 ```
 
+### Build Docker Imges with different package name
+```
+$ ./mvnw clean install -DskipTests -Pdocker -Ddocker.namespace=benbroadaway
+```
+```
+benbroadaway/concord-console   1.12.0                  f29b342595a3        14 seconds ago      635MB
+benbroadaway/concord-console   latest                  f29b342595a3        14 seconds ago      635MB
+benbroadaway/concord-server    1.12.0                  8a28d9e25af6        48 seconds ago      631MB
+benbroadaway/concord-server    latest                  8a28d9e25af6        48 seconds ago      631MB
+benbroadaway/concord-agent     1.12.0                  8cc05776d5b9        51 seconds ago      958MB
+benbroadaway/concord-agent     latest                  8cc05776d5b9        51 seconds ago      958MB
+benbroadaway/concord-ansible   1.12.0                  1509b8a47116        2 minutes ago       813MB
+benbroadaway/concord-ansible   latest                  1509b8a47116        2 minutes ago       813MB
+benbroadaway/concord-base      1.12.0                  868ccd94194d        3 minutes ago       590MB
+benbroadaway/concord-base      latest                  868ccd94194d        3 minutes ago       590MB
+```
+
 ## Kind of common build problems
 ### User can't run `docker` without sudo
 Don't forget to do the [post-install tasks](https://docs.docker.com/install/linux/linux-postinstall/) for Linux
