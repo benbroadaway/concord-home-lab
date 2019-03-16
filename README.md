@@ -85,3 +85,7 @@ walmartlabs/concord-ansible   latest                  4a1ffde29fb8        4 minu
 walmartlabs/concord-base      1.9.0                   4dae76681b32        5 minutes ago        504MB
 walmartlabs/concord-base      latest                  4dae76681b32        5 minutes ago        504MB
 ```
+
+## Kind of common build problems
+### User can't run `docker` without sudo
+Don't forget to do the [post-install tasks](https://docs.docker.com/install/linux/linux-postinstall/) for Linux
