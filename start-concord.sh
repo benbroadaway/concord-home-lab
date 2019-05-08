@@ -18,7 +18,7 @@ serverName=concord-server
 agentName=concord-agent
 consoleName=concord-console
 
-dockerLibrary=benbroadaway
+dockerLibrary=walmartlabs
 
 source ${BASE_DIR}/.dev_config.props
 
