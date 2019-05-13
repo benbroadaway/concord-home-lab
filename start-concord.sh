@@ -51,6 +51,7 @@ docker rm -f ${consoleName} ${agentName} dind ${serverName} ${dbName} ${oldapNam
 
 # Start Postgres DB
 docker run -d \
+    --restart unless-stopped \
     --name ${dbName} \
     -e "POSTGRES_PASSWORD=${dbPass}" \
     -e 'PGDATA=/var/lib/postgresql/data/pgdata' \
@@ -60,6 +61,7 @@ docker run -d \
   
 # start OpenLDAP
 docker run -d \
+    --restart unless-stopped \
     -e LDAP_ADMIN_PASSWORD=${oldapAdminPass} \
     --name ${oldapName} \
     osixia/openldap:1.2.3
@@ -83,6 +85,7 @@ fi
 
 # Start Concord Server
 docker run -d \
+    --restart unless-stopped \
     --link ${dbName} \
     --link ${oldapName} \
     --name ${serverName} \
@@ -109,6 +112,7 @@ printf ".\n"
 
 # Start Docker-in-Docker (DIND)
 docker run -d \
+    --restart unless-stopped \
     --privileged \
     --name dind \
     --volume ${DEV_DIR}/tmp:/tmp \
@@ -116,6 +120,7 @@ docker run -d \
 
 # Start Concord Agent
 docker run -d \
+    --restart unless-stopped \
     --name ${agentName} \
     --link ${serverName} \
     --link dind \
@@ -131,6 +136,7 @@ docker run -d \
 
 # Start Concord Console
 docker run -d \
+    --restart unless-stopped \
     --name ${consoleName} \
     --link ${serverName} \
     --publish "${consolePort}:8080" \
