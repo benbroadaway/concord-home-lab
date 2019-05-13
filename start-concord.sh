@@ -15,7 +15,7 @@ consolePort=
 dbName=concord-database
 oldapName=concord-oldap
 serverName=concord-server
-agentName=concord-agent
+agentName=concord-agent01
 consoleName=concord-console
 
 dockerLibrary=walmartlabs
@@ -47,7 +47,8 @@ mv ${CONCORD_CFG_FILE}.tmp ${CONCORD_CFG_FILE}
 echo "CONCORD_CFG_FILE: ${CONCORD_CFG_FILE}"
 
 echo "Deleting any existing containers..."
-docker rm -f ${consoleName} ${agentName} dind ${serverName} ${dbName} ${oldapName} 2>/dev/null
+docker stop $(docker ps --all --format "{{.Names}}" | grep ${agentName}) 2>/dev/null
+docker rm -f ${consoleName} dind ${serverName} ${dbName} ${oldapName} 2>/dev/null
 
 # Start Postgres DB
 docker run -d \
@@ -121,7 +122,7 @@ docker run -d \
 # Start Concord Agent
 docker run -d \
     --restart unless-stopped \
-    --name ${agentName} \
+    --name "${agentName}-01" \
     --link ${serverName} \
     --link dind \
     -v ${DEV_DIR}/tmp:/tmp \
