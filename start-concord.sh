@@ -47,7 +47,7 @@ mv ${CONCORD_CFG_FILE}.tmp ${CONCORD_CFG_FILE}
 echo "CONCORD_CFG_FILE: ${CONCORD_CFG_FILE}"
 
 echo "Deleting any existing containers..."
-docker stop $(docker ps --all --format "{{.Names}}" | grep ${agentName}) 2>/dev/null
+docker rm -f $(docker ps --all --format "{{.Names}}" | grep ${agentName}) 2>/dev/null
 docker rm -f ${consoleName} dind ${serverName} ${dbName} ${oldapName} 2>/dev/null
 
 # Start Postgres DB
