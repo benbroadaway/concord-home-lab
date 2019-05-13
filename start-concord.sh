@@ -15,7 +15,7 @@ consolePort=
 dbName=concord-database
 oldapName=concord-oldap
 serverName=concord-server
-agentName=concord-agent01
+agentName=concord-agent
 consoleName=concord-console
 
 dockerLibrary=walmartlabs
@@ -147,11 +147,3 @@ docker run -d \
 
 
 sleep 5;
-
-
-
-
-
-
-
-
