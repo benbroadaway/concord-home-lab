@@ -18,6 +18,7 @@ oldapAdminPass=admin-password
 dbPass=database-password
 concordVersion=1.20.1
 consolePort=8080   # docker-published port
+localDns=192.168.1.1
 ```
 
 ## Run the script

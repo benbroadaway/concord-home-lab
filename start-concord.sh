@@ -125,6 +125,8 @@ docker run -d \
     --name "${agentName}-01" \
     --link ${serverName} \
     --link dind \
+    --dns ${local_dns} \
+    --dns 8.8.8.8 \
     -v ${DEV_DIR}/tmp:/tmp \
     -v "${HOME}/.m2/repository:/home/concord/.m2/repository" \
     -v "${BASE_DIR}/maven.json:/opt/concord/conf/maven.json:ro" \
